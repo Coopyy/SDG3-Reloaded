@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDG3R-Client", "SDG3R-Client\SDG3R-Client.csproj", "{0D88EBE0-2666-45A0-83E1-BEE01BA6186E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDG3R-Server", "SDG3R-Server\SDG3R-Server.csproj", "{95EC00DE-C32A-4BA9-A8F9-59A34C44EF82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D88EBE0-2666-45A0-83E1-BEE01BA6186E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D88EBE0-2666-45A0-83E1-BEE01BA6186E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D88EBE0-2666-45A0-83E1-BEE01BA6186E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D88EBE0-2666-45A0-83E1-BEE01BA6186E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95EC00DE-C32A-4BA9-A8F9-59A34C44EF82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EC00DE-C32A-4BA9-A8F9-59A34C44EF82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EC00DE-C32A-4BA9-A8F9-59A34C44EF82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EC00DE-C32A-4BA9-A8F9-59A34C44EF82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {576A87B2-FF92-41F3-B217-0DDDE8D95802}
+	EndGlobalSection
+EndGlobal
