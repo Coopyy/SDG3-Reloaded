@@ -295,6 +295,14 @@
   <ItemGroup>
     <Compile Include="Entry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="Utilities\Environment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SDG3R-Core\SDG3R-Core.csproj">
+      <Project>{ba670d62-9d6c-4ced-aab6-67501743f1ae}</Project>
+      <Name>SDG3R-Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
