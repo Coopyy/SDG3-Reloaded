@@ -55,12 +55,16 @@ namespace SDG3R.Core.Logging
 
         public static void SendConsole(string content, ConsoleColor color)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("[SDG3R] ");
             Console.ForegroundColor = color;
             Console.WriteLine(content);
             Console.ResetColor();
         }
         public static void SendConsole(string content, ConsoleColor color = ConsoleColor.White, ConsoleColor bgcolor = ConsoleColor.Black)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write("[SDG3R] ");
             Console.BackgroundColor = bgcolor;
             Console.ForegroundColor = color;
             Console.WriteLine(content);

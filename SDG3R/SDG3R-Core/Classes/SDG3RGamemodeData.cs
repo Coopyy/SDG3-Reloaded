@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SDG.Unturned;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,20 +7,25 @@ using System.Threading.Tasks;
 
 namespace SDG3R.Core.Classes
 {
-    public class SDG3RServerData
+    public class SDG3RGamemodeData
     {
         public string Gamemode; // Deathmatch, not Team Deathmatch
         public Teams Teams;
         public bool UseLoadouts;
+        public int ScoreLimit; // -1 if infinite
+        public int TimeLimitInSeconds; // -1 if infinite
+        //public List<string> MapRotation;
 
-        public SDG3RServerData(string Gamemode, Teams Teams, bool UseLoadouts)
+        public SDG3RGamemodeData(string Gamemode, Teams Teams, bool UseLoadouts, int ScoreLimit, int TimeLimitInSeconds)
         {
             this.Gamemode = Gamemode;
             this.Teams = Teams;
             this.UseLoadouts = UseLoadouts;
+            this.TimeLimitInSeconds = TimeLimitInSeconds;
+            this.ScoreLimit = ScoreLimit;
         }
 
-        public string GetGamemodeString() // Loadout Team Deathmatch
+        public string GetGamemodeString() // Loadout Team Deathmatch on Alpha Valley
         {
             string s = "";
             if (UseLoadouts)
@@ -36,7 +42,8 @@ namespace SDG3R.Core.Classes
                     s += "Multi-Team ";
                     break;
             }
-            return s += Gamemode;
+            //return s += $"{Gamemode} on {Provider.currentServerInfo.map}";
+            return s += $"{Gamemode}";
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace SDG3R.Server
 {
@@ -16,8 +17,11 @@ namespace SDG3R.Server
         {
             Console.Clear();
             IConsole.SendConsole("SDG3 Reloaded", ConsoleColor.Cyan);
+            Server.GamemodesObj = new GameObject();
+            GameObject.DontDestroyOnLoad(Server.GamemodesObj);
             Utilities.Environment.Setup();
-            IConsole.SendConsole("Preparing: " + Server.ServerData.GetGamemodeString(), ConsoleColor.Cyan);
+            Server.ServerData.TrySwitchGamemode();
+            IConsole.SendConsole("Preparing: " + Server.ServerData.CurrentModeData.GetGamemodeString(), ConsoleColor.Cyan);
         }
 
 

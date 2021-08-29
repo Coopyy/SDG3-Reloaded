@@ -293,7 +293,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\SDG3RServerData.cs" />
+    <Compile Include="Classes\SDG3RGamemodeData.cs" />
     <Compile Include="Classes\Teams.cs" />
     <Compile Include="Logging\IConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
