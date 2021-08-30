@@ -25,6 +25,10 @@ namespace SDG3R.Client
         public static GameObject gO = null;
         public void initialize()
         {
+            // eventually for custom launcher
+            //if (System.Environment.CommandLine.IndexOf("-SDG3R", StringComparison.OrdinalIgnoreCase) == -1)
+            //    return;
+
             Assembly.LoadFile($"{Directory.GetCurrentDirectory()}\\Unturned_Data\\0Harmony.dll");
             gO = new GameObject();
             UnityEngine.Object.DontDestroyOnLoad(gO);
