@@ -38,9 +38,9 @@ namespace SDG3R.Core.Logging
             w.title = title;
         }
 
-        public static void Setup()
+        public static void Setup(string title = "SDG3 Reloaded")
         {
-            w.title = "SDG3 Reloaded";
+            w.title = title;
             s.initialize(w);
             s.inputCommitted += x;
 

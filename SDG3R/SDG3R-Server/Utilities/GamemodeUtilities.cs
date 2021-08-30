@@ -55,7 +55,7 @@ namespace SDG3R.Server.Utilities
             if (!IsGamemodeConfigExist(name))
             {
                 IConsole.SendConsole($"Config for '{name}' is missing, Creating default config...", ConsoleColor.Yellow);
-                File.WriteAllText(gmcfgdir, JsonConvert.SerializeObject(new SDG3RGamemodeData(name, Teams.Two, false, 25, 300), Formatting.Indented));
+                File.WriteAllText(gmcfgdir, JsonConvert.SerializeObject(new SDG3RGamemodeData(name, Teams.Two, false, 25, 300, true, true), Formatting.Indented));
             }
 
             if (Server.ServerData.CurrentMode != null)

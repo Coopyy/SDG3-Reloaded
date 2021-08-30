@@ -13,7 +13,7 @@ namespace ExampleGamemode
     {
         public override void Load()
         {
-            IConsole.SendConsole("Hello from custo mgamemode");
+            IConsole.SendConsole("ExampleGamemode Loaded!");
             AddComponent(typeof(Manager));
         }
     }
