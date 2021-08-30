@@ -16,6 +16,7 @@ namespace ExampleGamemode
     {
         int seconds = 300;
         int score = 0;
+        int score1 = 0;
         public void Start()
         {
             StartCoroutine(yea());
@@ -29,11 +30,12 @@ namespace ExampleGamemode
                 {
                     IConsole.SendConsole("Updating Client");
                     item.player.sendAchievementUnlocked((int)InfoType.TimeRemaining + "!" + seconds);
-                    item.player.sendAchievementUnlocked((int)InfoType.SetScoreBoard + "!" + score);
+                    item.player.sendAchievementUnlocked((int)InfoType.SetScoreBoard + "!" + $"{score},{score1},100");
                     IConsole.SendConsole("Done");
                 }
                 seconds--;
                 score++;
+                score1++;
                 yield return new WaitForSeconds(1f);
             }
         }

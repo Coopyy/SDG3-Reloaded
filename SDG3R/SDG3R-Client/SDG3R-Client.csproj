@@ -295,6 +295,8 @@
   <ItemGroup>
     <Compile Include="Attributes\MonoComponent.cs" />
     <Compile Include="Entry.cs" />
+    <Compile Include="Events\Delegates\IncomingInfoHandler.cs" />
+    <Compile Include="Events\GameEvents.cs" />
     <Compile Include="Utilities\Environment.cs" />
     <Compile Include="Overrides\ReceiveAchievementUnlocked.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
