@@ -12,22 +12,19 @@ namespace SDG3R.Core.Classes
         public string Gamemode; // Deathmatch, not Team Deathmatch
         public Teams Teams;
         public bool UseLoadouts;
-        public bool DisplayScore;
-        public bool DisplayTimeLimit;
         public int ScoreLimit; // -1 if infinite
         public int TimeLimitInSeconds; // -1 if infinite
+        public int MininumPlayersToStart;
         //public List<string> MapRotation;
 
-        public SDG3RGamemodeData(string Gamemode, Teams Teams, bool UseLoadouts, int ScoreLimit, int TimeLimitInSeconds, bool DisplayScore, bool DisplayTimeLimit)
+        public SDG3RGamemodeData(string Gamemode, Teams Teams, bool UseLoadouts, int ScoreLimit, int TimeLimitInSeconds, int MininumPlayersToStart)
         {
             this.Gamemode = Gamemode;
             this.Teams = Teams;
             this.UseLoadouts = UseLoadouts;
             this.TimeLimitInSeconds = TimeLimitInSeconds;
             this.ScoreLimit = ScoreLimit;
-            this.DisplayScore = DisplayScore;
-            this.DisplayTimeLimit = DisplayTimeLimit;
-            
+            this.MininumPlayersToStart = MininumPlayersToStart;
         }
 
         public string GetGamemodeString() // Loadout Team Deathmatch on Alpha Valley

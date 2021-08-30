@@ -17,7 +17,6 @@ namespace SDG3R.Server.Classes
         private static Random rnd = new Random();
 
         public ServerConfig ServerConfig;
-        public SDG3RGamemodeData CurrentModeData = null;
         public Gamemode CurrentMode = null;
         public SDG3RServerData(ServerConfig ServerConfig)  // new server, only called once
         {
@@ -39,7 +38,7 @@ namespace SDG3R.Server.Classes
                 else if (ServerConfig.Gamemodes.Count > 1)
                 {
                     gm = ServerConfig.Gamemodes.OrderBy(x => rnd.Next()).Take(1).First();
-                    while (gm == CurrentModeData.Gamemode) // dont choose gamemode thats already running
+                    while (gm == CurrentMode.GamemodeData.Gamemode) // dont choose gamemode thats already running
                         gm = ServerConfig.Gamemodes.OrderBy(x => rnd.Next()).Take(1).First();
                 }
 

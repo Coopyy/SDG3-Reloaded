@@ -55,12 +55,12 @@ namespace SDG3R.Server.Utilities
             if (!IsGamemodeConfigExist(name))
             {
                 IConsole.SendConsole($"Config for '{name}' is missing, Creating default config...", ConsoleColor.Yellow);
-                File.WriteAllText(gmcfgdir, JsonConvert.SerializeObject(new SDG3RGamemodeData(name, Teams.Two, false, 25, 300, true, true), Formatting.Indented));
+                File.WriteAllText(gmcfgdir, JsonConvert.SerializeObject(new SDG3RGamemodeData(name, Teams.Two, false, 25, 300, 2), Formatting.Indented));
             }
 
             if (Server.ServerData.CurrentMode != null)
             {
-                IConsole.SendConsole($"Unloading Gamemode: '{Server.ServerData.CurrentModeData.Gamemode}'", ConsoleColor.Yellow);
+                IConsole.SendConsole($"Unloading Gamemode: '{Server.ServerData.CurrentMode.GamemodeData}'", ConsoleColor.Yellow);
                 UnloadCurrent();
             }
 
@@ -72,9 +72,9 @@ namespace SDG3R.Server.Utilities
                 if (p != null)
                 {
                     var plugin = (Gamemode)Activator.CreateInstance(p);
+                    plugin.SetData(name);
                     plugin.Load();
                     Server.ServerData.CurrentMode = plugin;
-                    Server.ServerData.CurrentModeData = JsonConvert.DeserializeObject<SDG3RGamemodeData>(File.ReadAllText(gmcfgdir));
                     IConsole.SendConsole($"Gamemode: '{name}' now running", ConsoleColor.Green);
                 }
                 else
