@@ -53,10 +53,17 @@ namespace SDG3R.Core.Logging
                 s.update();
         }
 
+        private static string GetUser()
+        {
+            if (!Provider.isServer && !Dedicator.isDedicated)
+                return "-C";
+            return "-S";
+        }
+
         public static void SendConsole(string content, ConsoleColor color)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("[SDG3R] ");
+            Console.Write($"[SDG3R{GetUser()}] ");
             Console.ForegroundColor = color;
             Console.WriteLine(content);
             Console.ResetColor();
@@ -64,7 +71,7 @@ namespace SDG3R.Core.Logging
         public static void SendConsole(string content, ConsoleColor color = ConsoleColor.White, ConsoleColor bgcolor = ConsoleColor.Black)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.Write("[SDG3R] ");
+            Console.Write($"[SDG3R{GetUser()}] ");
             Console.BackgroundColor = bgcolor;
             Console.ForegroundColor = color;
             Console.WriteLine(content);
