@@ -2,6 +2,7 @@
 using SDG3R.Core.Classes;
 using SDG3R.Core.Logging;
 using SDG3R.Server.Classes;
+using SDG3R.Server.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,9 +15,6 @@ namespace ExampleGamemode
 {
     public class Manager : MonoBehaviour
     {
-        int seconds = 300;
-        int score = 0;
-        int score1 = 0;
         public void Start()
         {
             StartCoroutine(yea());
@@ -28,15 +26,10 @@ namespace ExampleGamemode
             {
                 foreach (var item in Provider.clients)
                 {
-                    IConsole.SendConsole("Updating Client");
-                    item.player.sendAchievementUnlocked((int)InfoType.TimeRemaining + "!" + seconds);
-                    item.player.sendAchievementUnlocked((int)InfoType.SetScoreBoard + "!" + $"{score},{score1},100");
-                    IConsole.SendConsole("Done");
+                    Loader.instance.TeamData.IncrementScore(item);
+                    Communication.UpdateClientScoreboard(Loader.instance.TeamData);
                 }
-                seconds--;
-                score++;
-                score1++;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(5f);
             }
         }
     }

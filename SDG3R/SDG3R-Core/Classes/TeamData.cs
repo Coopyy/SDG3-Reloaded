@@ -13,9 +13,11 @@ namespace SDG3R.Core.Classes
     {
         public List<Team> Teams = new List<Team>();
         public Teams TeamType;
-        public TeamData(Teams TeamType)
+        public int MaxScore;
+        public TeamData(Teams TeamType, int MaxScore)
         {
             this.TeamType = TeamType;
+            this.MaxScore = MaxScore;
             switch (TeamType)
             {
                 case Classes.Teams.Two:
@@ -82,7 +84,8 @@ namespace SDG3R.Core.Classes
             {
                 if (t.Members.Contains(player.playerID.steamID.m_SteamID))
                 {
-                    t.Score += Amount;
+                    if (MaxScore != -1 && t.Score < MaxScore)
+                        t.Score += Amount;
                     break;
                 }
             }

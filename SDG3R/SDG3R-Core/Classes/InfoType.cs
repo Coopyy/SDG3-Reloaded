@@ -9,6 +9,6 @@ namespace SDG3R.Core.Classes
     public enum InfoType
     {
         SetScoreBoard,
-        TimeRemaining
+        GameState
     }
 }

@@ -13,19 +13,20 @@ namespace SDG3R.Server.Classes
 {
     public class Gamemode
     {
-        public GameStateData GameState;
+        public GameStateData GameStateData;
         public SDG3RGamemodeData GamemodeData;
         public TeamData TeamData;
 
         public Gamemode()
         {
-            
+
         }
 
         public void SetData(string name)
         {
-            GamemodeData = JsonConvert.DeserializeObject<SDG3RGamemodeData>(File.ReadAllText(string.Format("Servers/{0}/SDG3R/Gamemodes/{1}/{1}.global.config", Dedicator.serverID, name)));
-            GameState = new GameStateData(GamemodeData.TimeLimitInSeconds, Core.Classes.GameState.WaitingForPlayers);
+            GamemodeData = JsonConvert.DeserializeObject<SDG3RGamemodeData>(File.ReadAllText(string.Format("Servers/{0}/SDG3R/Gamemodes/{1}/{1}.config", Dedicator.serverID, name)));
+            GameStateData = new GameStateData(GamemodeData.TimeLimitInSeconds, GameState.WaitingForPlayers);
+            TeamData = new TeamData(GamemodeData.Teams, GamemodeData.ScoreLimit);
         }
 
         public void AddComponent(Type t)
@@ -43,12 +44,6 @@ namespace SDG3R.Server.Classes
             return string.Format("Servers/{0}/SDG3R/Gamemodes/{1}/", Dedicator.serverID, GamemodeData.Gamemode);
         }
 
-        public void EndGame()
-        {
-            GameState.GameState = Core.Classes.GameState.PostGame;
-            GameEnd();
-        }
-
         public virtual void Load()
         {
 
@@ -60,25 +55,33 @@ namespace SDG3R.Server.Classes
         }
 
         ///<summary>
-        ///called ONCE before the game start. will then wait the configured amount of 'pregame time' until the GameLoop starts
+        ///called once before the game start. will then wait the configured amount of 'pregame time' until the GameLoop starts
         ///</summary>
-        public virtual void PreGameStart()
+        public virtual void OnPreGameStart()
         {
 
         }
 
         ///<summary>
-        ///called ONCE at game start, might want to 
+        ///called once at game start, might want to 
         ///</summary>
-        public virtual void GameStart()
+        public virtual void OnGameStart()
         {
 
         }
 
         ///<summary>
-        ///called ONCE at game start, might want to 
+        ///called once after the game ends 
         ///</summary>
-        public virtual void GameEnd()
+        public virtual void OnPostGameStart()
+        {
+
+        }
+
+        ///<summary>
+        ///called once after the post game ends
+        ///</summary>
+        public virtual void OnPostGameEnd()
         {
 
         }

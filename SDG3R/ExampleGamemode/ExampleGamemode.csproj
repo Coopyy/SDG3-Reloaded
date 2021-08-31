@@ -339,8 +339,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Manager.cs" />
     <Compile Include="Loader.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,7 @@
-﻿using SDG3R.Core.Logging;
+﻿using SDG.Unturned;
+using SDG3R.Core.Logging;
 using SDG3R.Server.Classes;
+using Steamworks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,47 @@ namespace ExampleGamemode
         {
             instance = this;
             IConsole.SendConsole("ExampleGamemode Loaded!");
+
+            Provider.onEnemyConnected += onEnemyConnected;
+            Provider.onEnemyDisconnected += onEnemyDisconnected;
+
             AddComponent(typeof(Manager));
+
+        }
+
+        public void onEnemyConnected(SteamPlayer player)
+        {
+            if (instance.GameStateData.GameState == SDG3R.Core.Classes.GameState.InGame)
+                instance.TeamData.AddToBestTeam(player);
+        }
+
+        public void onEnemyDisconnected(SteamPlayer player)
+        {
+            instance.TeamData.RemoveFromAnyTeam(player);
+        }
+
+        public override void OnPreGameStart()
+        {
+            IConsole.SendConsole("OnPreGameStart called");
+        }
+
+        public override void OnGameStart()
+        {
+            foreach (var item in Provider.clients)
+            {
+                instance.TeamData.AddToBestTeam(item);
+            }
+            IConsole.SendConsole("OnGameStart called");
+        }
+
+        public override void OnPostGameStart()
+        {
+            IConsole.SendConsole("OnPostGameStart called");
+        }
+
+        public override void OnPostGameEnd()
+        {
+            IConsole.SendConsole("OnPostGameEnd called");
         }
     }
 }

@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace SDG3R.Client.Events.Delegates
 {
     public delegate void IncomingInfoHandler(InfoType infoType, string value);
-    public delegate void OnScoreboardChangeHandler(int yourteam, int second, int maxvalue);
-    public delegate void OnTimerChangeHandler(int seconds);
+    public delegate void OnScoreboardChangeHandler(TeamData TeamData);
+    public delegate void OnGameStateChangeHandler(GameStateData GameStateData);
 }

@@ -3,6 +3,7 @@ using SDG.Unturned;
 using SDG3R.Core.Classes;
 using SDG3R.Core.Logging;
 using SDG3R.Server.Classes;
+using SDG3R.Server.Managers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -60,7 +61,7 @@ namespace SDG3R.Server.Utilities
 
             if (Server.ServerData.CurrentMode != null)
             {
-                IConsole.SendConsole($"Unloading Gamemode: '{Server.ServerData.CurrentMode.GamemodeData}'", ConsoleColor.Yellow);
+                IConsole.SendConsole($"Unloading Gamemode: '{Server.ServerData.CurrentMode.GamemodeData.Gamemode}'", ConsoleColor.Yellow);
                 UnloadCurrent();
             }
 
@@ -75,6 +76,7 @@ namespace SDG3R.Server.Utilities
                     plugin.SetData(name);
                     plugin.Load();
                     Server.ServerData.CurrentMode = plugin;
+                    Server.GamemodesObj.AddComponent<GameStateManager>();
                     IConsole.SendConsole($"Gamemode: '{name}' now running", ConsoleColor.Green);
                 }
                 else

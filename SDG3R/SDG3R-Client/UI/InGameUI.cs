@@ -1,5 +1,7 @@
-﻿using SDG3R.Client.Attributes;
+﻿using Newtonsoft.Json;
+using SDG3R.Client.Attributes;
 using SDG3R.Client.Events;
+using SDG3R.Core.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,29 +16,42 @@ namespace SDG3R.Client.UI
     {
         void Start()
         {
-            GameEvents.OnScoreboardChange += ScoreboardChanged;
-            GameEvents.OnTimerChange += TimeRemainingChanged;
+            GameEvents.OnGameStateChange += OnGameStateChange;
+            GameEvents.OnScoreboardChange += OnScoreboardChange;
         }
 
         private static string timeremaining = "00:00";
-        private static int team1 = 0;
-        private static int team2 = 0;
-        private static int maxscore = 0;
+        private static string gamestate = "";
+        private static TeamData tteamData = null;
 
         void OnGUI()
         {
             GUILayout.Box(timeremaining);
-            GUILayout.Box($"Your Score: {team1}/{maxscore}");
-            GUILayout.Box($"Enemy Score: {team2}/{maxscore}");
+            GUILayout.Box(gamestate);
+            
+            if (tteamData != null)
+            {
+                foreach (Team item in tteamData.Teams)
+                {
+                    GUILayout.Box(item.Score.ToString());
+                    foreach (ulong t in item.Members)
+                    {
+                        GUILayout.Box(t.ToString());
+                    }
+                }
+            }
         }
 
-        public static void ScoreboardChanged(int yourteam, int secondslot, int max)
+        public static void OnScoreboardChange(TeamData teamData)
         {
-            team1 = yourteam;
-            team2 = secondslot;
-            maxscore = max;
+            tteamData = teamData;
         }
 
-        public static void TimeRemainingChanged(int value) => timeremaining = TimeSpan.FromSeconds(value).ToString(@"mm\:ss");
+        public static void OnGameStateChange(GameStateData data)
+        {
+            timeremaining = TimeSpan.FromSeconds(data.TimeRemaining).ToString(@"mm\:ss");
+            gamestate = Enum.GetName(typeof(GameState), data.GameState);
+        }
+
     }
 }
