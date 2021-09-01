@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SDG3R.Core.Classes
+namespace SDG3R.Client.Attributes
 {
-    public enum InfoType
+    [AttributeUsage(AttributeTargets.Class)]
+    internal class PlayerComponent : Attribute
     {
-        SetScoreBoard,
-        GameState,
-        PlayerDeath
     }
 }

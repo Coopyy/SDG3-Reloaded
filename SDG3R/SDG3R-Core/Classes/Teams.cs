@@ -10,7 +10,6 @@ namespace SDG3R.Core.Classes
     {
         FFA,
         Two,
-        Multi,
         None
     }
 }

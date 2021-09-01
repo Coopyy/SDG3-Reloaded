@@ -40,9 +40,6 @@ namespace SDG3R.Core.Classes
                 case Teams.Two:
                     s += "Team ";
                     break;
-                case Teams.Multi:
-                    s += "Multi-Team ";
-                    break;
             }
             //return s += $"{Gamemode} on {Provider.currentServerInfo.map}";
             return s += $"{Gamemode}";

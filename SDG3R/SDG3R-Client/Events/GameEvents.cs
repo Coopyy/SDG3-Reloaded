@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SDG3R.Client.Events.Delegates;
 using SDG3R.Core.Classes;
+using SDG3R.Core.Data;
 using SDG3R.Core.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace SDG3R.Client.Events
     {
         public static event OnGameStateChangeHandler OnGameStateChange;
         public static event OnScoreboardChangeHandler OnScoreboardChange;
+        public static event OnPlayerDeathHandler OnPlayerDeath;
         public static event IncomingInfoHandler OnReceiveGameInfo;
         public static void DoIncomingInfoHandler(InfoType infoType, string value)
         {
@@ -22,10 +24,13 @@ namespace SDG3R.Client.Events
             switch (infoType)
             {
                 case InfoType.SetScoreBoard:
-                    OnScoreboardChange?.Invoke(JsonConvert.DeserializeObject<TeamData>(value));
+                    OnScoreboardChange?.Invoke(JsonConvert.DeserializeObject<ScoreData>(value));
                     break;
                 case InfoType.GameState:
                     OnGameStateChange?.Invoke(JsonConvert.DeserializeObject<GameStateData>(value));
+                    break;
+                case InfoType.PlayerDeath:
+                    OnPlayerDeath?.Invoke(JsonConvert.DeserializeObject<KillFeedData>(value));
                     break;
                 default:
                     IConsole.SendConsole($"Invalid InfoType in communication: '{infoType}' carrying value '{value}'", ConsoleColor.Red);

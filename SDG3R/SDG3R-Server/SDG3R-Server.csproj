@@ -296,6 +296,7 @@
     <Compile Include="Classes\Gamemode.cs" />
     <Compile Include="Classes\SDG3RServerData.cs" />
     <Compile Include="Classes\ServerConfig.cs" />
+    <Compile Include="Managers\EventManager.cs" />
     <Compile Include="Managers\GameStateManager.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,7 +312,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

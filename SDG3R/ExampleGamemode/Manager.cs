@@ -24,10 +24,10 @@ namespace ExampleGamemode
         {
             while (true)
             {
-                foreach (var item in Provider.clients)
+                foreach (var item in Loader.instance.TeamData.Teams)
                 {
                     Loader.instance.TeamData.IncrementScore(item);
-                    Communication.UpdateClientScoreboard(Loader.instance.TeamData);
+                    Communication.SendAllClients(InfoType.SetScoreBoard, Loader.instance.TeamData);
                 }
                 yield return new WaitForSeconds(5f);
             }

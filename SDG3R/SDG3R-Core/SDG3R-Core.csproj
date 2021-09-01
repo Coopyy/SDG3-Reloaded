@@ -293,17 +293,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\GameStateData.cs" />
+    <Compile Include="Data\GameStateData.cs" />
     <Compile Include="Classes\InfoType.cs" />
-    <Compile Include="Classes\TeamData.cs" />
+    <Compile Include="Data\KillFeedData.cs" />
+    <Compile Include="Data\ScoreData.cs" />
     <Compile Include="Classes\SDG3RGamemodeData.cs" />
     <Compile Include="Classes\GameState.cs" />
+    <Compile Include="Classes\SerializableColor.cs" />
     <Compile Include="Classes\Teams.cs" />
+    <Compile Include="Extensions\SteamPlayerExtensions.cs" />
     <Compile Include="Logging\IConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

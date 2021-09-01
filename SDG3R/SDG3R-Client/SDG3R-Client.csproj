@@ -293,15 +293,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\PlayerComponent.cs" />
     <Compile Include="Attributes\MonoComponent.cs" />
     <Compile Include="Entry.cs" />
+    <Compile Include="Events\Delegates\OnGameStateChangeHandler.cs" />
+    <Compile Include="Events\Delegates\OnPlayerDeathHandler.cs" />
+    <Compile Include="Events\Delegates\OnScoreboardChangeHandler.cs" />
     <Compile Include="Events\Delegates\IncomingInfoHandler.cs" />
     <Compile Include="Events\GameEvents.cs" />
+    <Compile Include="UI\Game\KillFeedDisplay.cs" />
+    <Compile Include="UI\Game\TimerDisplay.cs" />
+    <Compile Include="UI\Game\ScoreDisplay.cs" />
+    <Compile Include="Utilities\AssetUtilities.cs" />
     <Compile Include="Utilities\Environment.cs" />
     <Compile Include="Overrides\ReceiveAchievementUnlocked.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\InGameUI.cs" />
     <Compile Include="Utilities\PatchUtilities.cs" />
+    <Compile Include="Utilities\UIUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SDG3R-Core\SDG3R-Core.csproj">

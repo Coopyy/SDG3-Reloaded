@@ -1,4 +1,5 @@
 ﻿using SDG.Unturned;
+using SDG3R.Core.Classes;
 using SDG3R.Server.Utilities;
 using System;
 using System.Collections;
@@ -35,7 +36,7 @@ namespace SDG3R.Server.Managers
             Server.ServerData.CurrentMode.GameStateData.GameState = Core.Classes.GameState.PreGame;
             while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.PreGame && Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0)
             {
-                Communication.UpdateClientGameState(Server.ServerData.CurrentMode.GameStateData);
+                Communication.SendAllClients(InfoType.GameState, Server.ServerData.CurrentMode.GameStateData);
                 Server.ServerData.CurrentMode.GameStateData.TimeRemaining--;
                 yield return new WaitForSecondsRealtime(1f);
             }
@@ -47,9 +48,9 @@ namespace SDG3R.Server.Managers
             Server.ServerData.CurrentMode.OnGameStart();
             Server.ServerData.CurrentMode.GameStateData.TimeRemaining = Server.ServerData.CurrentMode.GamemodeData.TimeLimitInSeconds;
             Server.ServerData.CurrentMode.GameStateData.GameState = Core.Classes.GameState.InGame;
-            while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.InGame && Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0) // or score reached
+            while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.InGame && Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0 && Server.ServerData.CurrentMode.TeamData.Winner == null) // or score reached
             {
-                Communication.UpdateClientGameState(Server.ServerData.CurrentMode.GameStateData);
+                Communication.SendAllClients(InfoType.GameState, Server.ServerData.CurrentMode.GameStateData);
                 Server.ServerData.CurrentMode.GameStateData.TimeRemaining--;
                 yield return new WaitForSecondsRealtime(1f);
             }
@@ -63,7 +64,7 @@ namespace SDG3R.Server.Managers
             Server.ServerData.CurrentMode.GameStateData.GameState = Core.Classes.GameState.PostGame;
             while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.PostGame && Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0)
             {
-                Communication.UpdateClientGameState(Server.ServerData.CurrentMode.GameStateData);
+                Communication.SendAllClients(InfoType.GameState, Server.ServerData.CurrentMode.GameStateData);
                 Server.ServerData.CurrentMode.GameStateData.TimeRemaining--;
                 yield return new WaitForSecondsRealtime(1f);
             }

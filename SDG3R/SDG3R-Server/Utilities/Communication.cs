@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SDG.Unturned;
 using SDG3R.Core.Classes;
+using SDG3R.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,10 @@ namespace SDG3R.Server.Utilities
 {
     public class Communication
     {
-        public static void BroadcastRawData(InfoType infoType, string data)
+        public static void SendAllClients(InfoType infoType, object data)
         {
             foreach (var players in Provider.clients)
-                players.player.sendAchievementUnlocked((int)infoType + "!" + data);
-        }
-
-        public static void UpdateClientScoreboard(TeamData TeamData)
-        {
-            BroadcastRawData(InfoType.SetScoreBoard, JsonConvert.SerializeObject(TeamData));
-        }
-
-        public static void UpdateClientGameState(GameStateData GameState)
-        {
-            BroadcastRawData(InfoType.GameState, JsonConvert.SerializeObject(GameState));
+                players.player.sendAchievementUnlocked((int)infoType + "!" + JsonConvert.SerializeObject(data));
         }
     }
 }

@@ -29,13 +29,14 @@ namespace SDG3R.Client
             //if (System.Environment.CommandLine.IndexOf("-SDG3R", StringComparison.OrdinalIgnoreCase) == -1)
             //    return;
 
+            IConsole.Setup();
+            IConsole.SendConsole("SDG3 Reloaded", ConsoleColor.Cyan);
             Assembly.LoadFile($"{Directory.GetCurrentDirectory()}\\Unturned_Data\\0Harmony.dll");
             gO = new GameObject();
             UnityEngine.Object.DontDestroyOnLoad(gO);
-
-            IConsole.Setup();
-            IConsole.SendConsole("SDG3 Reloaded", ConsoleColor.Cyan);
             Utilities.Environment.Setup();
+            AssetUtilities.LoadAssets();
+            Level.onPostLevelLoaded += LevelLoaded;
             foreach (Type T in Assembly.GetExecutingAssembly().GetTypes())
             {
                 if (T.IsDefined(typeof(MonoComponent), false))
@@ -46,6 +47,18 @@ namespace SDG3R.Client
             }
         }
 
+        public static void LevelLoaded(int level)
+        {
+            foreach (Type T in Assembly.GetExecutingAssembly().GetTypes())
+            {
+                if (T.IsDefined(typeof(PlayerComponent), false))
+                {
+                    IConsole.SendConsole("Adding Component: " + T.FullName, ConsoleColor.Green);
+                    //gO.AddComponent(T);
+                    Player.player.gameObject.AddComponent(T);
+                }
+            }
+        }
 
         public void shutdown()
         {

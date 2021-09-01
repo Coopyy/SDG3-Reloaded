@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SDG.Unturned;
 using SDG3R.Core.Classes;
+using SDG3R.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,7 @@ namespace SDG3R.Server.Classes
     {
         public GameStateData GameStateData;
         public SDG3RGamemodeData GamemodeData;
-        public TeamData TeamData;
+        public ScoreData TeamData;
 
         public Gamemode()
         {
@@ -26,7 +27,7 @@ namespace SDG3R.Server.Classes
         {
             GamemodeData = JsonConvert.DeserializeObject<SDG3RGamemodeData>(File.ReadAllText(string.Format("Servers/{0}/SDG3R/Gamemodes/{1}/{1}.config", Dedicator.serverID, name)));
             GameStateData = new GameStateData(GamemodeData.TimeLimitInSeconds, GameState.WaitingForPlayers);
-            TeamData = new TeamData(GamemodeData.Teams, GamemodeData.ScoreLimit);
+            TeamData = new ScoreData(GamemodeData.Teams, GamemodeData.ScoreLimit);
         }
 
         public void AddComponent(Type t)
