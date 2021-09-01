@@ -4,6 +4,7 @@ using SDG.Framework.Modules;
 using SDG.Unturned;
 using SDG3R.Core.Classes;
 using SDG3R.Core.Logging;
+using SDG3R.Server.Commands;
 using SDG3R.Server.Managers;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace SDG3R.Server
             SDG3RObj = new GameObject();
             GameObject.DontDestroyOnLoad(SDG3RObj);
             SDG3RObj.AddComponent<EventManager>();
+            Commander.register(new ForceSwitchCommand());
             Server.GamemodesObj = new GameObject();
             GameObject.DontDestroyOnLoad(Server.GamemodesObj);
             Utilities.Environment.Setup();

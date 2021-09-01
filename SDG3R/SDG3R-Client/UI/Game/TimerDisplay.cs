@@ -28,7 +28,7 @@ namespace SDG3R.Client.UI.Game
             if (AssetUtilities.SDG3RSkin != null)
                 GUI.skin = AssetUtilities.SDG3RSkin;
 
-            GUI.Box(new Rect((Screen.width / 2) - 40, 10, 80, 40), TimeRemainingString, style: "TimerBG");
+            GUI.Box(new Rect((Screen.width / 2) - 40, 10, 80, 20), TimeRemainingString, style: "TimerBG");
         }
 
         public static void OnGameStateChange(GameStateData data)

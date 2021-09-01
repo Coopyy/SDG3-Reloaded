@@ -296,6 +296,7 @@
     <Compile Include="Classes\Gamemode.cs" />
     <Compile Include="Classes\SDG3RServerData.cs" />
     <Compile Include="Classes\ServerConfig.cs" />
+    <Compile Include="Commands\ForceSwitchCommand.cs" />
     <Compile Include="Managers\EventManager.cs" />
     <Compile Include="Managers\GameStateManager.cs" />
     <Compile Include="Entry.cs" />
@@ -311,8 +312,6 @@
       <Name>SDG3R-Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

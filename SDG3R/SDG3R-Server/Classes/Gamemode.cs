@@ -72,7 +72,7 @@ namespace SDG3R.Server.Classes
         }
 
         ///<summary>
-        ///called once after the game ends 
+        ///called once after the game ends. will then wait the configured amount of 'postgame time' until the GameLoop starts
         ///</summary>
         public virtual void OnPostGameStart()
         {

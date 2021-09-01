@@ -38,9 +38,9 @@ namespace SDG3R.Client.UI.Game
             int LeftWidth = (Screen.width / 10);
             if (Score.MaxScore > 0)
                 LeftWidth = (int)((Screen.width / 10) * ((float)MyTeam.Score / (float)Score.MaxScore));
-            GUI.Box(new Rect((Screen.width / 2) - 50 - (Screen.width / 10) - 2, 10, (Screen.width / 10) + 2, 40), "", style: "ScoreBGLeft");
-            UIUtilities.DrawColor(new Rect((Screen.width / 2) - 51 - LeftWidth, 11, LeftWidth, 38), new Color(MyTeam.SColor.r, MyTeam.SColor.g, MyTeam.SColor.b));
-            GUI.Label(new Rect((Screen.width / 2) - 50 - (Screen.width / 10) - 2, 10, (Screen.width / 10) + 2, 40), MyTeam.Score.ToString(), style: "ScoreLeft");
+            GUI.Box(new Rect((Screen.width / 2) - 50 - (Screen.width / 10), 10, (Screen.width / 10), 20), "", style: "ScoreBGLeft");
+            UIUtilities.DrawColor(new Rect((Screen.width / 2) - 50 - LeftWidth, 10, LeftWidth, 20), new Color(MyTeam.SColor.r, MyTeam.SColor.g, MyTeam.SColor.b, .9f));
+            GUI.Label(new Rect((Screen.width / 2) - 50 - (Screen.width / 10), 10, (Screen.width / 10), 20), MyTeam.Score.ToString(), style: "ScoreLeft");
             #endregion
 
             if (BestEnemyTeam == null)
@@ -50,9 +50,9 @@ namespace SDG3R.Client.UI.Game
             int RightWidth = (Screen.width / 10);
             if (Score.MaxScore > 0)
                 RightWidth = (int)((Screen.width / 10) * ((float)BestEnemyTeam.Score / (float)Score.MaxScore));
-            GUI.Box(new Rect((Screen.width / 2) + 50, 10, (Screen.width / 10) + 2, 40), "", style: "ScoreBGRight");
-            UIUtilities.DrawColor(new Rect((Screen.width / 2) + 51, 11, RightWidth, 38), new Color(BestEnemyTeam.SColor.r, BestEnemyTeam.SColor.g, BestEnemyTeam.SColor.b));
-            GUI.Label(new Rect((Screen.width / 2) + 50, 10, (Screen.width / 10) + 2, 40), BestEnemyTeam.Score.ToString(), style: "ScoreRight");
+            GUI.Box(new Rect((Screen.width / 2) + 50, 10, (Screen.width / 10), 20), "", style: "ScoreBGRight");
+            UIUtilities.DrawColor(new Rect((Screen.width / 2) + 50, 10, RightWidth, 20), new Color(BestEnemyTeam.SColor.r, BestEnemyTeam.SColor.g, BestEnemyTeam.SColor.b, .9f));
+            GUI.Label(new Rect((Screen.width / 2) + 50, 10, (Screen.width / 10), 20), BestEnemyTeam.Score.ToString(), style: "ScoreRight");
             #endregion
         }
 

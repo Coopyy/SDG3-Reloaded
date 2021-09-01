@@ -65,7 +65,7 @@ namespace SDG3R.Core.Data
 
         public void RemoveFromAnyTeam(SteamPlayer player)
         {
-            foreach (Team t in Teams)
+            foreach (Team t in Teams.ToList())
             {
                 if (t.Members.Contains(player.playerID.steamID.m_SteamID))
                 {
@@ -82,11 +82,13 @@ namespace SDG3R.Core.Data
             {
                 if (t.Members.Contains(player.playerID.steamID.m_SteamID))
                 {
+                    if (t.Score + Amount < 0)
+                        return;
                     if (MaxScore > 0)
                         t.Score += Amount;
                     else if (t.Score < MaxScore)
                         t.Score += Amount;
-                    else
+                    if (t.Score == MaxScore)
                         Winner = t;
                     break;
                 }
@@ -95,11 +97,13 @@ namespace SDG3R.Core.Data
 
         public void IncrementScore(Team team, int Amount = 1)
         {
+            if (team.Score + Amount < 0)
+                return;
             if (MaxScore == -1)
                 team.Score += Amount;
             else if (team.Score < MaxScore)
                 team.Score += Amount;
-            else
+            if (team.Score == MaxScore)
                 Winner = team;
         }
 

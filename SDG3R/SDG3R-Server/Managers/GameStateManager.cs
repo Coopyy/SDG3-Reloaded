@@ -48,7 +48,7 @@ namespace SDG3R.Server.Managers
             Server.ServerData.CurrentMode.OnGameStart();
             Server.ServerData.CurrentMode.GameStateData.TimeRemaining = Server.ServerData.CurrentMode.GamemodeData.TimeLimitInSeconds;
             Server.ServerData.CurrentMode.GameStateData.GameState = Core.Classes.GameState.InGame;
-            while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.InGame && Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0 && Server.ServerData.CurrentMode.TeamData.Winner == null) // or score reached
+            while (Server.ServerData.CurrentMode.GameStateData.GameState == Core.Classes.GameState.InGame && (Server.ServerData.CurrentMode.GameStateData.TimeRemaining > 0 || Server.ServerData.CurrentMode.GamemodeData.TimeLimitInSeconds == -1) && Server.ServerData.CurrentMode.TeamData.Winner == null) // or score reached
             {
                 Communication.SendAllClients(InfoType.GameState, Server.ServerData.CurrentMode.GameStateData);
                 Server.ServerData.CurrentMode.GameStateData.TimeRemaining--;

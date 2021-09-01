@@ -31,14 +31,14 @@ namespace SDG3R.Client.UI.Game
             GUI.BeginGroup(new Rect(Screen.width - 510, 10, 500, 500));
             foreach (KillObject KFObj in Feed.ToList())
             {
-                if (KFObj.StartTimer + (KFObj.Timer - 1) <= Time.realtimeSinceStartup && KFObj.Alpha > 0)
+                if (KFObj.StartTimer + (KFObj.Timer - 1) <= Time.realtimeSinceStartup && (KFObj.Alpha - Time.deltaTime) >= 0)
                     KFObj.SetAlpha(KFObj.Alpha - Time.deltaTime);
 
                 if (KFObj.StartTimer + KFObj.Timer <= Time.realtimeSinceStartup)
                     Feed.Remove(KFObj);
 
                 GUI.color = new Color(1, 1, 1, KFObj.Alpha);
-                GUILayout.Label($"<color=#{ColorToHex(KFObj.KillerColor, KFObj.Alpha)}>{KFObj.Killer}</color> | {KFObj.Weapon} | <color=#{ColorToHex(KFObj.PlayerColor, KFObj.Alpha)}>{KFObj.Player}</color>", style: "KillFeed", new GUILayoutOption[] { GUILayout.Width(500) });
+                GUILayout.Label($"<color=#{ColorToHex(KFObj.KillerColor, KFObj.Alpha)}>{KFObj.Killer}</color> [{KFObj.Weapon}] <color=#{ColorToHex(KFObj.PlayerColor, KFObj.Alpha)}>{KFObj.Player}</color>", style: "KillFeed", new GUILayoutOption[] { GUILayout.Width(500) });
                 GUI.color = new Color(1, 1, 1, 1);
 
             }
