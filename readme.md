@@ -2,6 +2,8 @@
 
 unfinished modded client & server for unturned
 
+archived due to like all of this being possible serverside now lmao
+
 adds easy support for new game modes, user interfaces etc
 
 
